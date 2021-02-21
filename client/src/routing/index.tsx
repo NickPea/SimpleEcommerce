@@ -11,15 +11,7 @@ import CartView from "../pages/cart-view";
 import CheckoutView from "../pages/checkout-view";
 
 //nav
-function NavBar() {
-	return (
-		<nav>
-			<Link to="/">Home</Link> {''}
-			<Link to="/store">Store</Link> {/** -> item views */}
-			<Link to="/cart">Cart</Link> {/** -> checkout */}
-		</nav>
-	);
-}
+import NavBar from './navbar';
 
 //routes
 const AppRouter = () => {
