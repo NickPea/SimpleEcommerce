@@ -1,5 +1,21 @@
 {
 	"browserslist": "cover 99.5%, not dead",
+	"version": "1.0.0",
+	"name": "simple-ecommerce-client",
+	"scripts": {
+		"clean": "rm -r dist",
+		"build": "webpack",
+		"clean-build": "rm -r dist && webpack",
+		"cb": "npm run clean-build",
+		"serve": "webpack serve",
+		"sv": "npm run serve"
+	},
+	"dependencies": {
+		"lodash": "^4.17.20",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"react-router-dom": "^5.2.0"
+	},
 	"devDependencies": {
 		"@babel/core": "^7.12.17",
 		"@babel/preset-env": "^7.12.17",
@@ -16,22 +32,9 @@
 		"precss": "^4.0.0",
 		"prettier": "^2.2.1",
 		"style-loader": "^2.0.0",
+		"styled-components": "^5.2.1",
 		"webpack": "^5.23.0",
 		"webpack-cli": "^4.5.0",
 		"webpack-dev-server": "^3.11.2"
-	},
-	"version": "1.0.0",
-	"name": "simple-ecommerce-client",
-	"scripts": {
-		"clean": "rm -r dist",
-		"build": "webpack",
-		"clean-build": "rm -r dist && webpack",
-		"serve": "webpack serve"
-	},
-	"dependencies": {
-		"lodash": "^4.17.20",
-		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
-		"react-router-dom": "^5.2.0"
 	}
 }
