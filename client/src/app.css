@@ -1,11 +1,229 @@
-/*  */
+/**/
+
+/* basics -------------------------------------------------------------------------------- */
 
 * {
-    box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 :root {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+	font-weight: 400;
+	font-size: 16px;
+}
+
+/* responsive design --------------------------------------------------------------------- */
+
+/* row */
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* col reset */
+[class*="col-"] {
+	float: left;
+	/* padding: 15px; */
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+	.xs-col-1 {
+		width: 8.33%;
+	}
+	.xs-col-2 {
+		width: 16.66%;
+	}
+	.xs-col-3 {
+		width: 25%;
+	}
+	.xs-col-4 {
+		width: 33.33%;
+	}
+	.xs-col-5 {
+		width: 41.66%;
+	}
+	.xs-col-6 {
+		width: 50%;
+	}
+	.xs-col-7 {
+		width: 58.33%;
+	}
+	.xs-col-8 {
+		width: 66.66%;
+	}
+	.xs-col-9 {
+		width: 75%;
+	}
+	.xs-col-10 {
+		width: 83.33%;
+	}
+	.xs-col-11 {
+		width: 91.66%;
+	}
+	.xs-col-12 {
+		width: 100%;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	.sm-col-1 {
+		width: 8.33%;
+	}
+	.sm-col-2 {
+		width: 16.66%;
+	}
+	.sm-col-3 {
+		width: 25%;
+	}
+	.sm-col-4 {
+		width: 33.33%;
+	}
+	.sm-col-5 {
+		width: 41.66%;
+	}
+	.sm-col-6 {
+		width: 50%;
+	}
+	.sm-col-7 {
+		width: 58.33%;
+	}
+	.sm-col-8 {
+		width: 66.66%;
+	}
+	.sm-col-9 {
+		width: 75%;
+	}
+	.sm-col-10 {
+		width: 83.33%;
+	}
+	.sm-col-11 {
+		width: 91.66%;
+	}
+	.sm-col-12 {
+		width: 100%;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	.md-col-1 {
+		width: 8.33%;
+	}
+	.md-col-2 {
+		width: 16.66%;
+	}
+	.md-col-3 {
+		width: 25%;
+	}
+	.md-col-4 {
+		width: 33.33%;
+	}
+	.md-col-5 {
+		width: 41.66%;
+	}
+	.md-col-6 {
+		width: 50%;
+	}
+	.md-col-7 {
+		width: 58.33%;
+	}
+	.md-col-8 {
+		width: 66.66%;
+	}
+	.md-col-9 {
+		width: 75%;
+	}
+	.md-col-10 {
+		width: 83.33%;
+	}
+	.md-col-11 {
+		width: 91.66%;
+	}
+	.md-col-12 {
+		width: 100%;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	.lg-col-1 {
+		width: 8.33%;
+	}
+	.lg-col-2 {
+		width: 16.66%;
+	}
+	.lg-col-3 {
+		width: 25%;
+	}
+	.lg-col-4 {
+		width: 33.33%;
+	}
+	.lg-col-5 {
+		width: 41.66%;
+	}
+	.lg-col-6 {
+		width: 50%;
+	}
+	.lg-col-7 {
+		width: 58.33%;
+	}
+	.lg-col-8 {
+		width: 66.66%;
+	}
+	.lg-col-9 {
+		width: 75%;
+	}
+	.lg-col-10 {
+		width: 83.33%;
+	}
+	.lg-col-11 {
+		width: 91.66%;
+	}
+	.lg-col-12 {
+		width: 100%;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	.xl-col-1 {
+		width: 8.33%;
+	}
+	.xl-col-2 {
+		width: 16.66%;
+	}
+	.xl-col-3 {
+		width: 25%;
+	}
+	.xl-col-4 {
+		width: 33.33%;
+	}
+	.xl-col-5 {
+		width: 41.66%;
+	}
+	.xl-col-6 {
+		width: 50%;
+	}
+	.xl-col-7 {
+		width: 58.33%;
+	}
+	.xl-col-8 {
+		width: 66.66%;
+	}
+	.xl-col-9 {
+		width: 75%;
+	}
+	.xl-col-10 {
+		width: 83.33%;
+	}
+	.xl-col-11 {
+		width: 91.66%;
+	}
+	.xl-col-12 {
+		width: 100%;
+	}
 }
