@@ -8,7 +8,7 @@ module.exports = {
 	mode: "development",
 
 	entry: {
-		main: "./src/app.ts",
+		main: "./src/app",
 	},
 	output: {
 		filename: "[name].[contenthash].bundle.js",
