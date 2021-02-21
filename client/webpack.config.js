@@ -59,7 +59,6 @@ module.exports = {
 					},
 					{
 						loader: "css-loader",
-
 						options: {
 							importLoaders: 1,
 							sourceMap: true,
@@ -67,10 +66,18 @@ module.exports = {
 					},
 					{
 						loader: "postcss-loader",
-
 						options: {
-							plugins: function () {
-								return [precss, autoprefixer];
+							postcssOptions: {
+								plugins: [
+									[
+										"postcss-preset-env",
+										{
+											// Options
+										},
+									],
+									'precss',
+									'autoprefixer'
+								],
 							},
 						},
 					},

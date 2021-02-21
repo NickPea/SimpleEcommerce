@@ -4,27 +4,17 @@ import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 //pages
-const LandingView = () => {
-	return <div>Landing view</div>;
-};
-const StoreView = () => {
-	return <div>Store view</div>;
-};
-const ItemView = () => {
-	return <div>Item view</div>;
-};
-const CartView = () => {
-	return <div>Cart view</div>;
-};
-const CheckoutView = () => {
-	return <div>Checkout view</div>;
-};
+import LandingView from "../pages/landing-view";
+import StoreView from "../pages/store-view";
+import ItemView from "../pages/item-view";
+import CartView from "../pages/cart-view";
+import CheckoutView from "../pages/checkout-view";
 
 //nav
 function NavBar() {
 	return (
 		<nav>
-			<Link to="/">Home</Link>
+			<Link to="/">Home</Link> {''}
 			<Link to="/store">Store</Link> {/** -> item views */}
 			<Link to="/cart">Cart</Link> {/** -> checkout */}
 		</nav>
