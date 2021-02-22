@@ -11,7 +11,7 @@ import CartView from "../pages/cart-view";
 import CheckoutView from "../pages/checkout-view";
 
 //nav
-import NavBar from './navbar';
+import NavBar from '../layout/navbar';
 
 //routes
 const AppRouter = () => {
