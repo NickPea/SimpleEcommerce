@@ -9,6 +9,7 @@ import backgroundImageUrl from "./background-image.jpg";
 
 const Background = styled.div`
 	background: url(${backgroundImageUrl}) no-repeat;
+	background-attachment: fixed; /** parallax */
 	background-size: cover;
 	background-position: center;
 `;
