@@ -19,10 +19,10 @@ const AppRouter = () => {
 		<BrowserRouter>
 			<NavBar />
 			<Switch>
-				<Route exact path="/">
+				<Route exact path="/landing">
 					<LandingView />
 				</Route>
-				<Route exact path="/store">
+				<Route exact path="/">
 					<StoreView />
 				</Route>
 				<Route exact path="/item">

@@ -42,7 +42,7 @@ const RouteLink = styled(Link)`
 	align-self: flex-end;
 `;
 
-const CatalougeButton = styled.div`
+const CatalogButton = styled.div`
 	margin-top: 20px;
 	padding: 20px;
 	border: 1px solid white;
@@ -81,7 +81,7 @@ const HeroSection = () => {
 							<Fade>Get the most out of your Ride.</Fade>
 						</HeroTitle>
 						<RouteLink to="/store">
-							<CatalougeButton>Catalouge</CatalougeButton>
+							<CatalogButton>Full Catalog</CatalogButton>
 						</RouteLink>
 					</LeftPanelFlex>
 				</div>
