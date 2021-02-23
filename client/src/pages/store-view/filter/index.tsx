@@ -7,6 +7,9 @@ import styled from "styled-components";
 import HamburgerSVG from "../../../resources/icons/hamburger-svg";
 import CloseSVG from "../../../resources/icons/close-svg";
 
+//components
+import IconSizerRUI from '../../../resusable-ui/icon-sizer-rui'
+
 //styles
 const Wrapper = styled.div`
 `;
@@ -114,12 +117,6 @@ const CloseButton = styled.div`
 	}
 `;
 
-//util
-const IconSize = styled.div`
-	height: ${(p) => p.h};
-	width: ${(p) => p.w};
-`;
-
 
 //component
 const Filter = () => {
@@ -130,9 +127,9 @@ const Filter = () => {
 			<OnMobileOpenFilterButton>
 				<OpenButtonPosition>
 					<OpenButton onClick={() => set_isMobileFilterShown(true)}>
-						<IconSize h="20px" w="20px">
+						<IconSizerRUI h="20px" w="20px">
 							<HamburgerSVG />
-						</IconSize>
+						</IconSizerRUI>
 					</OpenButton>
 				</OpenButtonPosition>
 			</OnMobileOpenFilterButton>
@@ -142,9 +139,9 @@ const Filter = () => {
 						<OnMobileCloseFilterButton>
 							<CloseButtonPosition>
 								<CloseButton onClick={()=> set_isMobileFilterShown(false)}>
-									<IconSize h="20px" w="20px">
+									<IconSizerRUI h="20px" w="20px">
 										<CloseSVG />
-									</IconSize>
+									</IconSizerRUI>
 								</CloseButton>
 							</CloseButtonPosition>
 						</OnMobileCloseFilterButton>

@@ -18,8 +18,36 @@ export const featuredProducts = [
 ];
 
 export const storeProducts = [
-	{ imgUrl: img1URL, title: "raptor", price: "$2000" },
-	{ imgUrl: img2URL, title: "x-glide", price: "$2000" },
-	{ imgUrl: img3URL, title: "vesper 2", price: "$2000" },
-	{ imgUrl: img4URL, title: "grifter", price: "$2000" },
+	{
+		imgUrl: img1URL,
+		title: "raptor",
+		price: "$300",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	},
+	{
+		imgUrl: img2URL,
+		title: "x-glide",
+		price: "$25000",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	},
+	{
+		imgUrl: img3URL,
+		title: "vesper 2",
+		price: "$1200",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	},
+	{
+		imgUrl: img4URL,
+		title: "grifter",
+		price: "$4999",
+		description:
+			"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+	},
 ];
+
+export const singleStoreProduct = () => {
+	return storeProducts[Math.floor(Math.random() * storeProducts.length)];
+};
