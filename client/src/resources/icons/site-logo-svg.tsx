@@ -2,7 +2,7 @@
 
 import React from "react";
 
-const SiteLogo = () => {
+const SiteLogoSVG = () => {
 	return (
 		<svg
 			viewBox="0 0 24 24"
@@ -15,4 +15,4 @@ const SiteLogo = () => {
 	);
 };
 
-export default SiteLogo;
+export default SiteLogoSVG;

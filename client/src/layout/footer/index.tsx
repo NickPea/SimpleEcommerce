@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //site logo
-import SiteLogo from "../../resources/icons/site-logo";
+import SiteLogo from "../../resources/icons/site-logo-svg";
 
 const Wrapper = styled.div`
 	background: linear-gradient(whitesmoke, white);

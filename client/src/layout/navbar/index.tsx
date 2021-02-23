@@ -6,14 +6,14 @@ import styled from "styled-components";
 
 //resources
 import CartSVG from "../../resources/icons/cart-svg";
-import SiteLogo from "../../resources/icons/site-logo";
+import SiteLogo from "../../resources/icons/site-logo-svg";
 
 const Bar = styled.nav`
 	display: flex;
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: flex-end;
-
+ 
 	padding: 15px;
 	border-bottom: 1px solid lightgrey;
 
