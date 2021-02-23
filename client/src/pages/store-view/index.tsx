@@ -5,30 +5,16 @@ import styled from "styled-components";
 import Filter from "./filter";
 
 const Page = styled.div``;
-const LayoutWrapper = styled.div`
-	display: flex;
-	flex-flow: row nowrap;
-`;
-const LeftPanel = styled.div`
-	flex: 30%;
-	/* hide left panel on mobiles */
-	@media (max-width: 600px) {
-		display: none;
-	}
-`;
-const RightPanel = styled.div`
-	flex: 70%;
-	@media (max-width: 600px) {
-		flex: 100%;
-	}
-`;
+
 const StoreView = () => {
 	return (
 		<Page>
-			<LeftPanel>
-				<Filter />
-			</LeftPanel>
-			<RightPanel>helo</RightPanel>
+			<div className="row">
+				<div className="xs-col-12 sm-col-12 md-col-4">
+					<Filter/>
+				</div>
+				<div className="xs-col-12 sm-col-12 md-col-8">hello</div>
+			</div>
 		</Page>
 	);
 };

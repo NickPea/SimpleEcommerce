@@ -72,11 +72,11 @@ function NavBar() {
 				</LogoWrapper>
 				<SiteTitle>Simple - Cycles</SiteTitle>
 			</BrandWrapper>
-			<RouteLink to="/">
+			<RouteLink to="/landing">
 				<NavButton>Home</NavButton>
 			</RouteLink>{" "}
 			{""}
-			<RouteLink to="/store">
+			<RouteLink to="/">
 				<NavButton>Store</NavButton>
 			</RouteLink>{" "}
 			{/** -> item views */}
