@@ -76,7 +76,7 @@ function NavBar() {
 				<NavButton>Home</NavButton>
 			</RouteLink>{" "}
 			{""}
-			<RouteLink to="/">
+			<RouteLink to="/store">
 				<NavButton>Store</NavButton>
 			</RouteLink>{" "}
 			{/** -> item views */}

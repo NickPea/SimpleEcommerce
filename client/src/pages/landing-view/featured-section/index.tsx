@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 //temp data
-import products from "./fake-data-product-array";
+import { featuredProducts } from "../../../fake-product-data";
 
 const Wrapper = styled.div`
 	margin: 0 10%;
@@ -28,7 +28,6 @@ const ProductImage = styled.img`
 	@media (max-width: 600px) {
 		height: 150px;
 	}
-
 `;
 
 const ProductText = styled.div`
@@ -36,7 +35,7 @@ const ProductText = styled.div`
 	text-align: center;
 	border-top: 1px solid lightgrey;
 	border-bottom: 1px solid lightgrey;
-	
+
 	transition: 500ms;
 `;
 const ProductTitle = styled.div`
@@ -50,11 +49,11 @@ const ProductPrice = styled.div`
 
 const ProductHover = styled.div`
 	&:hover ${ProductText} {
-		background-color: ${p=>p.theme.smoothblack};
-		color: white
+		background-color: ${(p) => p.theme.smoothblack};
+		color: white;
 	}
 	&:hover ${ProductImage} {
-		box-shadow: ${p=>p.theme.boxshadow_light_pop};
+		box-shadow: ${(p) => p.theme.boxshadow_light_pop};
 	}
 `;
 
@@ -62,7 +61,7 @@ const FeaturedSection = () => {
 	return (
 		<Wrapper>
 			<div className="row">
-				{products.map((prod, index) => {
+				{featuredProducts.map((prod, index) => {
 					return (
 						<div className="xs-col-12 md-col-6 lg-col-4" key={index}>
 							<ProductContainer>

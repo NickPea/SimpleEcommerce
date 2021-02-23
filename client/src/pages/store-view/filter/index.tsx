@@ -63,7 +63,7 @@ const OnMobileFixAndAnimateFilter = styled.div`
 		top: 0;
 		left: 0;
 		width: 100vw;
-		transition: transform 300ms;
+		transition: transform 150ms;
 		transform: ${(p) => (p.show ? "translateX(0)" : "translateX(100vw)")};
 	}
 `;

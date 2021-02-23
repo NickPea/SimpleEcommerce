@@ -22,10 +22,10 @@ const AppRouter = () => {
 				<Route exact path="/landing">
 					<LandingView />
 				</Route>
-				<Route exact path="/">
+				<Route exact path="/store">
 					<StoreView />
 				</Route>
-				<Route exact path="/item">
+				<Route exact path="/">
 					<ItemView />
 				</Route>
 				<Route exact path="/cart">
