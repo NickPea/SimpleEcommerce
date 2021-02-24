@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //resources
-import CartSVG from "../../resources/icons/cart-svg";
-import SiteLogo from "../../resources/icons/site-logo-svg";
+import CartSVG from "../../../resources/icons/cart-svg"
+import SiteLogo from "../../../resources/icons/site-logo-svg";
 
 const Bar = styled.nav`
 	display: flex;

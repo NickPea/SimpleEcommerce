@@ -19,7 +19,6 @@ const LandingView = () => {
 			<FeaturedSection />
 			<MovieOverlaySection />
 			<Assurances />
-			<Footer />
 		</Page>
 	);
 };

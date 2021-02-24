@@ -21,7 +21,6 @@ const StoreView = () => {
 					<ProductDisplay />
 				</div>
 			</div>
-			<Footer />
 		</Page>
 	);
 };

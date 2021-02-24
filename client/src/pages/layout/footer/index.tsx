@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //site logo
-import SiteLogo from "../../resources/icons/site-logo-svg";
+import SiteLogo from "../../../resources/icons/site-logo-svg";
 
 const Wrapper = styled.div`
 	background: linear-gradient(whitesmoke, white);
@@ -38,7 +38,9 @@ const Copyright = () => {
 	return (
 		<div className="row">
 			<div className="xs-col-12 sm-col-12">
-				<TextAlignCenter>Copyright {new Date().getFullYear()}, Simple Cycles</TextAlignCenter>
+				<TextAlignCenter>
+					Copyright {new Date().getFullYear()}, Simple Cycles
+				</TextAlignCenter>
 			</div>
 		</div>
 	);

@@ -1,15 +1,19 @@
 //
 
-import React, { Fragment } from "react";
+import React from "react";
 import ReactDom from "react-dom";
 import { ThemeProvider } from "styled-components";
-import AppRouter from "./routing/index";
+import Routes from "./routes/index";
+import { BrowserRouter } from "react-router-dom";
 
 // global css
 import "./app.css";
+import NavBar from "./pages/layout/navbar";
+import Footer from "./pages/layout/footer";
+import Cart from './pages/layout/cart';
 
 //theme
-const styledTheme = {
+const theme = {
 	// colors
 	smoothblack: "rgb(25, 25, 25)",
 	neonblue: "rgba(4,217,255,1)",
@@ -23,11 +27,14 @@ const styledTheme = {
 //entry
 const App = () => {
 	return (
-		<React.Fragment>
-			<ThemeProvider theme={styledTheme}>
-				<AppRouter />
+		<BrowserRouter>
+			<ThemeProvider theme={theme}>
+				<NavBar />
+				<Routes />
+				<Footer />
+				<Cart open />
 			</ThemeProvider>
-		</React.Fragment>
+		</BrowserRouter>
 	);
 };
 

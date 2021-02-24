@@ -16,7 +16,7 @@ const { imgUrl, title, price, description } = singleStoreProduct();
 //styles
 const Page = styled.div``;
 const OnDesktopNarrowTo = styled.div`
-	@media(min-width: 800px) {
+	@media(min-width: 769px) {
 		width: ${(p) => p.x};
 		margin: 0 auto;
 	}
@@ -37,7 +37,6 @@ const ItemView = () => {
 					</div>
 				</div>
 			</OnDesktopNarrowTo>
-			<Footer />
 		</Page>
 	);
 };

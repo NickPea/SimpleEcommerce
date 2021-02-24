@@ -51,3 +51,8 @@ export const storeProducts = [
 export const singleStoreProduct = () => {
 	return storeProducts[Math.floor(Math.random() * storeProducts.length)];
 };
+
+export const cartProducts = [
+	{ imgUrl: img5URL, title: "traffic cheat", price: "$1200.00", count: 1 },
+	{ imgUrl: img6URL, title: "weekend sail", price: "$330.00", count: 1},
+];
