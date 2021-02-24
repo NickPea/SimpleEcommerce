@@ -3,7 +3,13 @@
 import React from "react";
 
 const CheckoutView = () => {
-	return <div>Checkout View Template</div>;
+	return (
+		<div>
+			<div>
+				what the fudge garry!!
+			</div>
+		</div>
+	);
 };
 
 export default CheckoutView;

@@ -19,10 +19,10 @@ const AppRouter = () => {
 			<Route exact path="/store">
 				<StoreView />
 			</Route>
-			<Route exact path="/checkout">
+			<Route exact path="/">
 				<CheckoutView />
 			</Route>
-			<Route exact path="/">
+			<Route exact path="/item">
 				<ItemView />
 			</Route>
 		</Switch>

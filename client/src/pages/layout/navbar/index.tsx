@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 //resources
-import CartSVG from "../../../resources/icons/cart-svg"
+import CartSVG from "../../../resources/icons/cart-svg";
 import SiteLogo from "../../../resources/icons/site-logo-svg";
 
 const Bar = styled.nav`
@@ -13,7 +13,7 @@ const Bar = styled.nav`
 	flex-flow: row wrap;
 	align-items: center;
 	justify-content: flex-end;
- 
+
 	padding: 15px;
 	border-bottom: 1px solid lightgrey;
 
@@ -24,6 +24,9 @@ const Bar = styled.nav`
 
 const RouteLink = styled(Link)`
 	text-decoration: none;
+	color: ${(p) => p.theme.smoothblack};
+`;
+const FakeRouteLink = styled.div`
 	color: ${(p) => p.theme.smoothblack};
 `;
 
@@ -72,19 +75,26 @@ function NavBar() {
 				</LogoWrapper>
 				<SiteTitle>Simple - Cycles</SiteTitle>
 			</BrandWrapper>
-			<RouteLink to="/landing">
+
+			<RouteLink to="/">
 				<NavButton>Home</NavButton>
-			</RouteLink>{" "}
-			{""}
+			</RouteLink>
+
 			<RouteLink to="/store">
 				<NavButton>Store</NavButton>
-			</RouteLink>{" "}
+			</RouteLink>
 			{/** -> item views */}
-			<RouteLink to="/cart">
+
+			<RouteLink to="/item">
+				<NavButton>Item</NavButton>
+			</RouteLink>
+
+			{/* opens cart */}
+			<FakeRouteLink>
 				<NavButton>
 					<CartSVG />
 				</NavButton>
-			</RouteLink>{" "}
+			</FakeRouteLink>
 			{/** -> checkout */}
 		</Bar>
 	);

@@ -4,8 +4,14 @@ import React from "react";
 import styled from "styled-components";
 
 const SiteButton = styled.div`
+	cursor: pointer;
+	user-select: none;
+
 	padding: 10px;
 	border-radius: 5px;
+
+	color: ${p=>p.color || 'black'};
+	background-color: ${p=>p.bg || 'white'};
 
 	${(props) => {
 		if (props.pop_up) {

@@ -17,7 +17,7 @@ const { imgUrl, title, price, description } = singleStoreProduct();
 const Page = styled.div``;
 const OnDesktopNarrowTo = styled.div`
 	@media(min-width: 769px) {
-		width: ${(p) => p.x};
+		width: ${ (p: {x: string}) => p.x};
 		margin: 0 auto;
 	}
 `;

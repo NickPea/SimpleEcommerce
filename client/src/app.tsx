@@ -32,7 +32,7 @@ const App = () => {
 				<NavBar />
 				<Routes />
 				<Footer />
-				<Cart open />
+				<Cart open={false} />
 			</ThemeProvider>
 		</BrowserRouter>
 	);
