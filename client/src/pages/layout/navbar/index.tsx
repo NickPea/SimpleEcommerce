@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 //resources
 import CartSVG from "../../../resources/icons/cart-svg";
-import SiteLogo from "../../../resources/icons/site-logo-svg";
+import SiteLogoSVG from "../../../resources/icons/site-logo-svg";
 
 const Bar = styled.nav`
 	display: flex;
@@ -71,7 +71,7 @@ function NavBar() {
 		<Bar>
 			<BrandWrapper>
 				<LogoWrapper>
-					<SiteLogo />
+					<SiteLogoSVG />
 				</LogoWrapper>
 				<SiteTitle>Simple - Cycles</SiteTitle>
 			</BrandWrapper>

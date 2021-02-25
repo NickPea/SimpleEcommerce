@@ -4,9 +4,7 @@ import React from "react";
 
 const HamburgerSVG = () => {
 	return (
-		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-			<path d="M24 6h-24v-4h24v4zm0 4h-24v4h24v-4zm0 8h-24v4h24v-4z" />
-		</svg>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" ><path d="M24 18v1h-24v-1h24zm0-6v1h-24v-1h24zm0-6v1h-24v-1h24z" fill="#1040e2"/><path d="M24 19h-24v-1h24v1zm0-6h-24v-1h24v1zm0-6h-24v-1h24v1z"/></svg>
 	);
 };
 

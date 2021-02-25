@@ -8,6 +8,8 @@ import styled from "styled-components";
 import SiteLogo from "../../../resources/icons/site-logo-svg";
 
 const Wrapper = styled.div`
+	margin-top: 100px;
+
 	background: linear-gradient(whitesmoke, white);
 	color: ${(p) => p.theme.smoothblack};
 	padding: 5% 8% 20% 8%;

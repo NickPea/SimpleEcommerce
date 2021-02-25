@@ -6,6 +6,7 @@ import styled from "styled-components";
 const SiteButton = styled.div`
 	cursor: pointer;
 	user-select: none;
+	text-align: center;
 
 	padding: 10px;
 	border-radius: 5px;

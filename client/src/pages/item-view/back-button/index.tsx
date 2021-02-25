@@ -13,27 +13,18 @@ import { useHistory } from "react-router-dom";
 
 //styles
 const Wrapper = styled.div``;
-const Position = styled.div`
-	display: flex;
-	flex-flow: row nowrap;
-
-	justify-content: flex-start;
-	margin: 2%;
-`;
 
 const BackButton = () => {
-	const reactHistory = useHistory();
-	return (
-		<Wrapper>
-			<Position>
-				<ButtonRUI pop_up onClick={() => reactHistory.goBack()}>
-					<IconSizerRUI h="30px" w="30px">
-						<BackSVG />
-					</IconSizerRUI>
-				</ButtonRUI>
-			</Position>
-		</Wrapper>
-	);
+  const reactHistory = useHistory();
+  return (
+    <Wrapper>
+      <ButtonRUI pop_up onClick={() => reactHistory.goBack()}>
+        <IconSizerRUI h="30px" w="30px">
+          <BackSVG />
+        </IconSizerRUI>
+      </ButtonRUI>
+    </Wrapper>
+  );
 };
 
 export default BackButton;

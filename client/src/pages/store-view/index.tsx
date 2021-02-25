@@ -6,7 +6,6 @@ import styled from "styled-components";
 //components
 import Filter from "./filter";
 import ProductDisplay from "./product-display";
-import Footer from "../../layout/footer";
 
 const Page = styled.div``;
 

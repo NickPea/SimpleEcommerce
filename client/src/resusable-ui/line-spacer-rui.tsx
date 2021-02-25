@@ -3,7 +3,12 @@
 import React from "react";
 import styled from "styled-components";
 
-const LineSpacer = styled.div`
+interface Proptypes {
+	margin?: string;
+	width?: string;
+}
+
+const LineSpacer = styled.div<Proptypes>`
 	margin: ${(p) => p.margin || "0px"};
 	width: ${(p) => p.width || "100%"};
 	border-bottom: 1px solid lightgrey;

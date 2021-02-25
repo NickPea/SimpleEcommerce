@@ -8,11 +8,11 @@ import HamburgerSVG from "../../../resources/icons/hamburger-svg";
 import CloseSVG from "../../../resources/icons/close-svg";
 
 //components
-import IconSizerRUI from '../../../resusable-ui/icon-sizer-rui'
+import IconSizerRUI from "../../../resusable-ui/icon-sizer-rui";
+import SiteButton from "../../../resusable-ui/button-rui";
 
 //styles
-const Wrapper = styled.div`
-`;
+const Wrapper = styled.div``;
 
 const Padding = styled.div`
 	padding: 5%;
@@ -81,9 +81,9 @@ const OpenButtonPosition = styled.div`
 	display: flex;
 	flex-flow: row nowrap;
 	justify-content: flex-end;
+	padding: 10px;
 `;
-const OpenButton = styled.div`
-	margin: 5px;
+const OpenButton = styled(SiteButton)`
 	padding: 10px;
 	border-radius: ${(p) => p.theme.borderradius_light};
 	&:hover {
@@ -117,17 +117,15 @@ const CloseButton = styled.div`
 	}
 `;
 
-
 //component
 const Filter = () => {
 	const [_isMobileFilterShown, set_isMobileFilterShown] = useState(false);
-
 	return (
 		<Wrapper>
 			<OnMobileOpenFilterButton>
 				<OpenButtonPosition>
-					<OpenButton onClick={() => set_isMobileFilterShown(true)}>
-						<IconSizerRUI h="20px" w="20px">
+					<OpenButton pop_up onClick={() => set_isMobileFilterShown(true)}>
+						<IconSizerRUI h="30px" w="30px">
 							<HamburgerSVG />
 						</IconSizerRUI>
 					</OpenButton>
@@ -138,7 +136,7 @@ const Filter = () => {
 					<Background>
 						<OnMobileCloseFilterButton>
 							<CloseButtonPosition>
-								<CloseButton onClick={()=> set_isMobileFilterShown(false)}>
+								<CloseButton onClick={() => set_isMobileFilterShown(false)}>
 									<IconSizerRUI h="20px" w="20px">
 										<CloseSVG />
 									</IconSizerRUI>
