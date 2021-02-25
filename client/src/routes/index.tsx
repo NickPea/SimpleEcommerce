@@ -25,6 +25,9 @@ const AppRouter = () => {
 			<Route exact path="/item">
 				<ItemView />
 			</Route>
+			<Route path="*">
+				<h1>404: Page Not Found</h1>
+			</Route>
 		</Switch>
 	);
 };

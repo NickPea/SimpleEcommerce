@@ -17,8 +17,10 @@ import morgan from "morgan";
 
 const app = express();
 
-//static/
-app.use(express.static(path.join(__dirname, "public")));
+//static file search in order/
+app.use(express.static(path.join(__dirname, "../../../client/dist"))); //front-end files
+app.use(express.static(path.join(__dirname, "../../storage"))); //back-end files
+
 
 //global middleware
 app.use(morgan("dev"));

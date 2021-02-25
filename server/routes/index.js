@@ -1,13 +1,17 @@
 // main rounter
 
 import express from "express";
-const MainRouter = express.Router();
+const indexRouter = express.Router();
 
 //routers
-import sampleRouter from './testRouter.js'
+import testRouter from './testRouter'
+import appRouter from './appRouter'
 
 //
-MainRouter.use(sampleRouter);
+indexRouter.use(testRouter);
+indexRouter.use(appRouter);
 
 
-export default MainRouter;
+
+
+export default indexRouter;
