@@ -1,5 +1,8 @@
+//
+
 import React from "react";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
 //components
 import SiteButton from "../../../resusable-ui/button-rui";
@@ -10,7 +13,7 @@ import CartProductList from "./cart-list";
 //resources
 import CloseSVG from ".././../../resources/icons/close-svg";
 
-const PositionAndSize = styled.div`
+const PositionAndSize = styled.div<{show: boolean}>`
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -19,7 +22,7 @@ const PositionAndSize = styled.div`
 		width: 100%;
 	}
 
-	transition: width 500ms;
+	transition: transform 500ms;
 	${(p) => {
 		if (p.show) {
 			return "transform: translateX(0vw)";
@@ -84,17 +87,16 @@ const MarginLeftAuto = styled.div`
 	margin-left: auto;
 `;
 
-interface PropTypes {
-	open?: boolean;
-}
+function Cart() {
+	const cartIsVisible = useSelector((state) => state.ui.cart_is_visible);
+	const dispatch = useDispatch();
 
-function Cart({ open }: PropTypes) {
 	return (
-		<PositionAndSize show={open}>
+		<PositionAndSize show={cartIsVisible}>
 			<Wrapper>
 				<Header>
 					<Title>Cart</Title>
-					<CloseButton>
+					<CloseButton onClick={() => dispatch({type: 'UI/CART-TOGGLE'})}>
 						<SiteButton pop_up>
 							<IconSizer h="20px" w="20px">
 								<CloseSVG />

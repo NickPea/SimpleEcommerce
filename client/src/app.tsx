@@ -42,7 +42,7 @@ const App = () => {
 					<NavBar />
 					<Routes />
 					<Footer />
-					<Cart open={false} />
+					<Cart />
 				</ThemeProvider>
 			</BrowserRouter>
 		// </Provider>

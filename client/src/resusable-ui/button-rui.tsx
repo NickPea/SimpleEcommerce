@@ -3,7 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SiteButton = styled.div`
+const SiteButton = styled.div<{pop_up?: boolean, bg?: string}>`
 	cursor: pointer;
 	user-select: none;
 	text-align: center;

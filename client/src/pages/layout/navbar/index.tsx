@@ -1,6 +1,8 @@
 //
 
 import React from "react";
+import { useDispatch } from "react-redux";
+
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -67,6 +69,8 @@ const NavButton = styled.div`
 
 //nav
 function NavBar() {
+	const dispatch = useDispatch();
+
 	return (
 		<Bar>
 			<BrandWrapper>
@@ -95,7 +99,7 @@ function NavBar() {
 			</RouteLink>
 
 			{/* opens cart */}
-			<FakeRouteLink>
+			<FakeRouteLink onClick={()=>dispatch({type: 'UI/CART-TOGGLE'})}>
 				<NavButton>
 					<CartSVG />
 				</NavButton>
