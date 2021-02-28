@@ -6,11 +6,11 @@ import { ThemeProvider } from "styled-components";
 import Routes from "./routes/index";
 import { BrowserRouter } from "react-router-dom";
 
+//babel-polyfill-hack for generator functions
+import "regenerator-runtime/runtime";
+
 // global css
 import "./app.css";
-import NavBar from "./pages/layout/navbar";
-import Footer from "./pages/layout/footer";
-import Cart from './pages/layout/cart';
 
 //theme
 const theme = {
@@ -24,17 +24,28 @@ const theme = {
 	boxshadow_light_press: "0 1px 5px grey inset",
 };
 
+//components
+import NavBar from "./pages/layout/navbar";
+import Footer from "./pages/layout/footer";
+import Cart from './pages/layout/cart';
+
+//state
+import {Provider} from 'react-redux'
+import store from './state/store'
+
 //entry
 const App = () => {
 	return (
-		<BrowserRouter>
-			<ThemeProvider theme={theme}>
-				<NavBar />
-				<Routes />
-				<Footer />
-				<Cart open={false} />
-			</ThemeProvider>
-		</BrowserRouter>
+		<Provider store={store}>
+			<BrowserRouter>
+				<ThemeProvider theme={theme}>
+					<NavBar />
+					<Routes />
+					<Footer />
+					<Cart open={false} />
+				</ThemeProvider>
+			</BrowserRouter>
+		// </Provider>
 	);
 };
 

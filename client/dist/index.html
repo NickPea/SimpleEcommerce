@@ -5,9 +5,37 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">        
         <title>Simple Eccommerce</title>
-    <script defer src="main.64ddbc9be5b405656553.bundle.js"></script></head>
+    <script defer src="main.2a54f3c6472a686afe6a.bundle.js"></script></head>
     <body>
-        <div id="root">Error: Bundle Failed</div>
+        <div id="root">
+
+            <!-- Loading -->
+            <style>
+                .position {
+                    height: 50vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .loader {
+                    border-radius: 50%;
+                    border: 3px solid grey;
+                    border-right: 3px solid white;
+                    height: 40px;
+                    width: 40px;
+                    animation: spin 1s infinite;
+                }
+                @keyframes spin {
+                    from {transform: rotateZ(0deg)}
+                    from {transform: rotateZ(360deg)}
+                }
+            </style>
+            <div class="position">
+                <div class="loader"></div>
+            </div>
+            <!-- //Loading -->
+
+        </div>
         <noscript>Please enable javascript in your browser settings</noscript>
     </body>
 </html>

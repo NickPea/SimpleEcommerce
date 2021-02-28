@@ -13,20 +13,20 @@ import CheckoutView from "../pages/checkout-view";
 const AppRouter = () => {
 	return (
 		<Switch>
-			<Route exact path="/landing">
+			<Route exact path="/">
 				<LandingView />
 			</Route>
 			<Route exact path="/store">
 				<StoreView />
 			</Route>
-			<Route exact path="/">
+			<Route exact path="/checkout">
 				<CheckoutView />
 			</Route>
 			<Route exact path="/item">
 				<ItemView />
 			</Route>
 			<Route path="*">
-				<h1>404: Page Not Found</h1>
+				<h1>404: Bummer dude...</h1>
 			</Route>
 		</Switch>
 	);

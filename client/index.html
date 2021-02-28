@@ -7,7 +7,35 @@
         <title>Simple Eccommerce</title>
     </head>
     <body>
-        <div id="root">Error: Bundle Failed</div>
+        <div id="root">
+
+            <!-- Loading -->
+            <style>
+                .position {
+                    height: 50vh;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                }
+                .loader {
+                    border-radius: 50%;
+                    border: 3px solid grey;
+                    border-right: 3px solid white;
+                    height: 40px;
+                    width: 40px;
+                    animation: spin 1s infinite;
+                }
+                @keyframes spin {
+                    from {transform: rotateZ(0deg)}
+                    from {transform: rotateZ(360deg)}
+                }
+            </style>
+            <div class="position">
+                <div class="loader"></div>
+            </div>
+            <!-- //Loading -->
+
+        </div>
         <noscript>Please enable javascript in your browser settings</noscript>
     </body>
 </html>

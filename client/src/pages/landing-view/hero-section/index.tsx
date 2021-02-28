@@ -3,45 +3,69 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {Fade} from 'react-reveal';
-//
+import { Fade } from "react-reveal";
+
+//resources
 import backgroundImageUrl from "./background-image.jpg";
 
+const Wrapper = styled.div``;
 const Background = styled.div`
+	height: 100vh;
+
 	background: url(${backgroundImageUrl}) no-repeat;
 	background-attachment: fixed; /** parallax */
 	background-size: cover;
 	background-position: center;
 `;
-
-const LeftPanelFlex = styled.div`
-	margin: 10px;
-	padding: 20px;
+const PanelContainer = styled.div`
+	height: 100%;
 
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: row wrap;
+`;
+const LeftPanel = styled.div`
+	height: 100%;
+	flex: 70%;
+
+	@media (max-width: 600px) {
+		flex: 100%;
+	}
 
 	background-color: ${(p) => p.theme.backgroundcolor_transparent};
 	border-radius: ${(p) => p.theme.borderradius_light};
-`;
 
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+	align-items: center;
+`;
+const RightPanel = styled.div`
+	flex: 30%;
+	height: 100%;
+
+	@media (max-width: 600px) {
+		flex: 100%;
+	}
+
+	/*  */
+`;
 const HeroTitle = styled.div`
+	padding: 0 20%;
+	text-align: center;
 	font-size: 5rem;
 	color: white;
+
 	@media (max-width: 768px) {
-		font-size: 3rem;
+		font-size: 4rem;
+		padding: 0 5%;
 	}
 	@media (max-width: 600px) {
-		font-size: 2rem;
-		text-align: center;
+		font-size: 3rem;
 	}
 `;
-
 const RouteLink = styled(Link)`
 	text-decoration: none;
-	align-self: flex-end;
 `;
-
 const CatalogButton = styled.div`
 	margin-top: 20px;
 	padding: 20px;
@@ -73,23 +97,23 @@ const CatalogButton = styled.div`
 
 const HeroSection = () => {
 	return (
-		<Background>
-			<div className="row">
-				<div className="xs-col-12 md-col-6">
-					<LeftPanelFlex>
+		<Wrapper>
+			<Background>
+				<PanelContainer>
+					<LeftPanel>
 						<HeroTitle>
 							<Fade>Get the most out of your Ride.</Fade>
 						</HeroTitle>
 						<RouteLink to="/store">
 							<CatalogButton>Full Catalog</CatalogButton>
 						</RouteLink>
-					</LeftPanelFlex>
-				</div>
-				<div className="xs-col-12 md-col-6">
-					<div></div>
-				</div>
-			</div>
-		</Background>
+					</LeftPanel>
+					<RightPanel>
+						{' '}
+					</RightPanel>
+				</PanelContainer>
+			</Background>
+		</Wrapper>
 	);
 };
 

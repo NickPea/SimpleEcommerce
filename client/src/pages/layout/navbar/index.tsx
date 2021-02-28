@@ -89,6 +89,11 @@ function NavBar() {
 				<NavButton>Item</NavButton>
 			</RouteLink>
 
+			{/* temp nav button for development */}
+			<RouteLink to="/checkout">
+				<NavButton>checkout</NavButton>
+			</RouteLink>
+
 			{/* opens cart */}
 			<FakeRouteLink>
 				<NavButton>
