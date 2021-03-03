@@ -7,7 +7,10 @@ class Products {
 	//
 
 	async firstSixProducts() {
-		return await db.select("*").from("products").limit(6);
+		return await db
+			.select('products.*', 'images.url_path as image_url')
+			.from('products')
+			.join('images', 'products.id', 'images.product_id');
 	}
 }
 

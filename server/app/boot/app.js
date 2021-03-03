@@ -9,8 +9,6 @@ import path from "path";
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 //all routes
 import routing from "../routing/index.js";
-//request to console logging
-import morgan from "morgan";
 // ------------------------------------------------------------------------------------------------
 
 const app = express();
@@ -21,10 +19,15 @@ import '../events/listeners/index.js';
 
 //static file search in order/
 app.use(express.static(path.join(__dirname, "../../../client/dist"))); //front-end files
-app.use(express.static(path.join(__dirname, "../../storage"))); //back-end files
+app.use(express.static(path.join(__dirname, "../storage"))); //back-end files
 
 //global middleware
+import morgan from "morgan";
+import cors from 'cors';
 app.use(morgan("dev"));
+app.use(cors({
+	origin: 'http://localhost:8080',
+}));
 
 //routes
 app.use(routing);

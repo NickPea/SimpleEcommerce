@@ -7,7 +7,7 @@ export function up(knex) {
 		table.string('url_path').notNullable();
 		//FK
 		table.integer('product_id').unsigned().notNullable();
-		table.foreign('product_id').references('id').inTable('products')
+		table.foreign('product_id').references('id').inTable('products').onDelete('cascade');
 	});
 }
 

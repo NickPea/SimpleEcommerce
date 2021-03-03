@@ -1,10 +1,13 @@
 //
 
-import React from "react";
+import React, { Fragment, useEffect } from "react";
 import ReactDom from "react-dom";
 import { ThemeProvider } from "styled-components";
-import Routes from "./routes/index";
+import Routes from "./routes";
 import { BrowserRouter } from "react-router-dom";
+
+//service container
+import './services';
 
 //babel-polyfill-hack for generator functions
 import "regenerator-runtime/runtime";
@@ -24,31 +27,46 @@ const theme = {
 	boxshadow_light_press: "0 1px 5px grey inset",
 };
 
-//components
-import NavBar from "./pages/layout/navbar";
-import Footer from "./pages/layout/footer";
-import Cart from './pages/layout/cart';
-
 //state
-import {Provider} from 'react-redux'
-import store from './state/store'
+import { Provider, useDispatch } from "react-redux";
+import store from "./state/store";
+
+//components
+import NavBar from "./components/layout/navbar";
+import Footer from "./components/layout/footer";
+import Cart from "./components/layout/cart";
+import Notifications from "./components/layout/notifications";
+import LoadingCloak from "./components/layout/loading-cloak";
 
 //entry
 const App = () => {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch({ type: "APP/INIT" });
+	}, []);
+
 	return (
-		<Provider store={store}>
-			<BrowserRouter>
-				<ThemeProvider theme={theme}>
-					<NavBar />
-					<Routes />
-					<Footer />
-					<Cart />
-				</ThemeProvider>
-			</BrowserRouter>
-		// </Provider>
+		<Fragment>
+			<NavBar />
+			<Routes />
+			<Footer />
+			<Cart />
+			<Notifications />
+			<LoadingCloak />
+		</Fragment>
 	);
 };
 
 export default App;
 
-ReactDom.render(<App />, document.querySelector("#root"));
+ReactDom.render(
+	<Provider store={store}>
+		<BrowserRouter>
+			<ThemeProvider theme={theme}>
+				<App />
+			</ThemeProvider>
+		</BrowserRouter>
+	</Provider>,
+	document.querySelector("#root"),
+);

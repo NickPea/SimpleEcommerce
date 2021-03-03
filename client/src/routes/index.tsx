@@ -4,13 +4,13 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 //pages
-import LandingView from "../pages/landing-view";
-import StoreView from "../pages/store-view";
-import ItemView from "../pages/item-view";
-import CheckoutView from "../pages/checkout-view";
+import LandingView from "../components/landing-view";
+import StoreView from "../components/store-view";
+import ItemView from "../components/item-view";
+import CheckoutView from "../components/checkout-view";
 
 //routes
-const AppRouter = () => {
+const RouteSwitch = () => {
 	return (
 		<Switch>
 			<Route exact path="/">
@@ -32,4 +32,4 @@ const AppRouter = () => {
 	);
 };
 
-export default AppRouter;
+export default RouteSwitch;
