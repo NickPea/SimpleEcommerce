@@ -3,7 +3,7 @@
 import React, { Fragment, useEffect } from "react";
 import ReactDom from "react-dom";
 import { ThemeProvider } from "styled-components";
-import Routes from "./routes";
+import Routes from "./routing";
 import { BrowserRouter } from "react-router-dom";
 
 //service container

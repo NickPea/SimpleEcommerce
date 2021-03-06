@@ -1,125 +1,52 @@
 //
 
 import React, { useState } from "react";
-import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 //resources
 import HamburgerSVG from "../../../resources/icons/hamburger-svg";
 import CloseSVG from "../../../resources/icons/close-svg";
 
-//components
+//re-usable
 import IconSizerRUI from "../../resusable-ui/icon-sizer-rui";
-import SiteButton from "../../resusable-ui/button-rui";
 
-//styles
-const Wrapper = styled.div``;
+//styled components
+import {
+	Wrapper,
+	OnMobileOpenFilterButton,
+	OpenButtonPosition,
+	OpenButton,
+	OnMobileFixAndAnimateFilter,
+	Padding,
+	Background,
+	OnMobileCloseFilterButton,
+	CloseButtonPosition,
+	CloseButton,
+	TextPosition,
+	Title,
+	LineSpacer,
+	OptionsList,
+	Option,
+} from "./styled";
 
-const Padding = styled.div`
-	padding: 5%;
-`;
-const Background = styled.div`
-	background-color: whitesmoke;
-	border-radius: ${(p) => p.theme.borderradius_light};
-`;
-const TextPosition = styled.div`
-	display: flex;
-	flex-flow: column nowrap;
-`;
-const Title = styled.div`
-	padding: 5%;
-	font-size: 1.1rem;
-	font-weight: bolder;
-`;
-const LineSpacer = styled.div`
-	border-bottom: 1px solid grey;
-	width: 90%;
-	margin: 0 auto;
-`;
-const OptionsList = styled.div`
-	padding: 5% 0;
-
-	display: flex;
-	flex-flow: column nowrap;
-	align-items: center;
-`;
-const Option = styled.div`
-	padding: 10px;
-	font-size: 0.9rem;
-	font-weight: lighter;
-	color: ${(p) => p.theme.smoothblack};
-	border-radius: ${(p) => p.theme.borderradius_light};
-	cursor: pointer;
-	&:hover {
-		box-shadow: ${(p) => p.theme.boxshadow_light_pop};
-		font-weight: bolder;
-	}
-	&:active {
-		box-shadow: ${(p) => p.theme.boxshadow_light_press};
-		transform: translateY(1px);
-	}
-`;
-
-//on mobile
-const OnMobileFixAndAnimateFilter = styled.div`
-	@media (max-width: 600px) {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		transition: transform 150ms;
-		transform: ${(p) => (p.show ? "translateX(0)" : "translateX(100vw)")};
-	}
-`;
-
-const OnMobileOpenFilterButton = styled.div`
-	display: none;
-	@media (max-width: 600px) {
-		display: block;
-	}
-`;
-const OpenButtonPosition = styled.div`
-	display: flex;
-	flex-flow: row nowrap;
-	justify-content: flex-end;
-	padding: 10px;
-`;
-const OpenButton = styled(SiteButton)`
-	padding: 10px;
-	border-radius: ${(p) => p.theme.borderradius_light};
-	&:hover {
-		box-shadow: ${(p) => p.theme.boxshadow_light_pop};
-	}
-	&:active {
-		box-shadow: ${(p) => p.theme.boxshadow_light_press};
-	}
-`;
-
-const OnMobileCloseFilterButton = styled.div`
-	display: none;
-	@media (max-width: 600px) {
-		display: block;
-	}
-`;
-const CloseButtonPosition = styled.div`
-	position: absolute;
-	top: 0;
-	right: 0;
-	margin: 7%;
-`;
-const CloseButton = styled.div`
-	padding: 10px;
-	border-radius: ${(p) => p.theme.borderradius_light};
-	&:hover {
-		box-shadow: ${(p) => p.theme.boxshadow_light_pop};
-	}
-	&:active {
-		box-shadow: ${(p) => p.theme.boxshadow_light_press};
-	}
-`;
-
-//component
 const Filter = () => {
 	const [_isMobileFilterShown, set_isMobileFilterShown] = useState(false);
+
+	const categories = useSelector((state) => state.data.store_page.categories);
+	const dispatch = useDispatch();
+	const handleClickCategory = (category_name: string) => {
+		dispatch({
+			type: "DATA/STORE-PAGE/DISPLAY/CATEGORY-FETCH",
+			payload: category_name,
+		});
+	};
+	const handleClickPrice = (priceCode: string) => {
+		dispatch({
+			type: "DATA/STORE-PAGE/DISPLAY/PRICE-FETCH",
+			payload: priceCode,
+		});
+	};
+
 	return (
 		<Wrapper>
 			<OnMobileOpenFilterButton>
@@ -147,19 +74,23 @@ const Filter = () => {
 							<Title>Category</Title>
 							<LineSpacer />
 							<OptionsList>
-								<Option>Road</Option>
-								<Option>Mountain</Option>
-								<Option>Commuter</Option>
-								<Option>Recreational</Option>
-								<Option>BMX</Option>
-								<Option>Kids</Option>
+								{categories.map((category: { id: number; name: string }) => {
+									return (
+										<Option
+											onClick={() => handleClickCategory(category.name)}
+											key={category.id}
+										>
+											{category.name}
+										</Option>
+									);
+								})}
 							</OptionsList>
 							<Title>Price</Title>
 							<LineSpacer />
 							<OptionsList>
-								<Option>More than $5000</Option>
-								<Option>$1500 to $5000</Option>
-								<Option>Less than $1500</Option>
+								<Option onClick={()=> handleClickPrice('greaterthan5000')}>More than $5000</Option>
+								<Option onClick={()=> handleClickPrice('between1500and5000')}>$1500 to $5000</Option>
+								<Option onClick={()=> handleClickPrice('lessthan1500')}>Less than $1500</Option>
 							</OptionsList>
 						</TextPosition>
 					</Background>

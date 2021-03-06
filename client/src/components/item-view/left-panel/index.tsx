@@ -1,6 +1,7 @@
 //
 
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -17,15 +18,15 @@ const ImagePoster = styled.img`
 	object-fit: contain;
 `;
 
-interface PropTypes {
-	imageURL: string;
-}
+interface PropTypes {}
 
-function ItemDisplay({ imageURL }: PropTypes) {
+function ItemDisplay() {
+	const product = useSelector((state) => state.data.item_page.product);
+
 	return (
 		<Wrapper>
 			<Padding>
-				<ImagePoster src={imageURL} />
+				<ImagePoster src={product.imageURL} />
 			</Padding>
 		</Wrapper>
 	);

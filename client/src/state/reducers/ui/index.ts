@@ -20,6 +20,18 @@ export default (state = preloadedState, action: ActionTypes) => {
 				return { ..._state, cart_is_visible: !_state.cart_is_visible };
 			}
 			break;
+		case "UI/CART/OPEN":
+			{
+				const _state = cloneDeep(state);
+				return { ..._state, cart_is_visible: true };
+			}
+			break;
+		case "UI/CART/CLOSE":
+			{
+				const _state = cloneDeep(state);
+				return { ..._state, cart_is_visible: false };
+			}
+			break;
 		case "UI/APP-START-LOADING":
 			{
 				const _state = cloneDeep(state);

@@ -2,19 +2,26 @@
 
 import cloneDeep from "lodash/cloneDeep";
 
-export default (state = [], action) => {
+const preloadedState = []
+
+interface Action {
+	type: string,
+	payload: object
+}
+
+export default (state = preloadedState, action: Action) => {
 	switch (action.type) {
-		case "NOTIFICATIONS/ADD":
+		case "APP/NOTIFICATIONS/ADD":
 			{
 				const _state = cloneDeep(state);
-				_state.notifications.push(action.payload);
+				_state.push(action.payload);
 				return _state;
 			}
 			break;
-		case "NOTIFICATIONS/REMOVE":
+		case "APP/NOTIFICATIONS/REMOVE":
 			{
 				const _state = cloneDeep(state);
-				const filtered = _state.notifications.filter(
+				const filtered = _state.filter(
 					(item) => item.id === action.payload.id,
 				);
 				return filtered;

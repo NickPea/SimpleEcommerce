@@ -3,6 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
 	margin: 0 10%;
@@ -54,6 +55,10 @@ const ProductHover = styled.div`
 		box-shadow: ${(p) => p.theme.boxshadow_light_pop};
 	}
 `;
+const RouteLink = styled(Link)`
+	text-decoration: none;
+	color: inherit;
+`;
 
 const FeaturedSection = () => {
 	const featured = useSelector((state) => state.data.landing_page.featured);
@@ -61,18 +66,20 @@ const FeaturedSection = () => {
 	return (
 		<Wrapper>
 			<div className="row">
-				{featured.map((prod, index) => {
+				{featured.map((product, index) => {
 					return (
 						<div className="xs-col-12 md-col-6 lg-col-4" key={index}>
-							<ProductContainer>
-								<ProductHover>
-									<ProductImage src={prod.image_url} />
-									<ProductText>
-										<ProductTitle>{prod.title}</ProductTitle>
-										<ProductPrice>${prod.price}</ProductPrice>
-									</ProductText>
-								</ProductHover>
-							</ProductContainer>
+							<RouteLink to={`/item/${product.title}`}>
+								<ProductContainer>
+									<ProductHover>
+										<ProductImage src={product.image_url} />
+										<ProductText>
+											<ProductTitle>{product.title}</ProductTitle>
+											<ProductPrice>${product.price}</ProductPrice>
+										</ProductText>
+									</ProductHover>
+								</ProductContainer>
+							</RouteLink>
 						</div>
 					);
 				})}

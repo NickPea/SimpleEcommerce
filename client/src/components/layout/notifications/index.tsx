@@ -1,33 +1,49 @@
 //
 
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import ControlledSnackBar from "./controlled-snackbar";
+import { Button } from "@material-ui/core";
 import styled from "styled-components";
 
-const Wrapper = styled.div``;
-const Padding = styled.div`
-	padding: 5%;
+//styleds
+const StyledButton = styled(Button)`
+	color: white;
 `;
-
-//components
-import { Snackbar } from "@material-ui/core";
-import { Alert } from "@material-ui/lab";
-import { useSelector } from "react-redux";
 
 interface PropTypes {}
 
 function Notifications({}: PropTypes) {
-	const notifications = useSelector((state) => state.notifications);
+	const notifications = useSelector((state) => state.app.notifications);
+	const dispatch = useDispatch();
 
 	return (
-		<Wrapper>
-			<Padding>
-				{notifications?.map((note) => {
-					<Snackbar>
-						<Alert severity={note.severity}>{note.message}</Alert>
-					</Snackbar>;
-				})}
-			</Padding>
-		</Wrapper>
+		<>
+			{notifications.map((notification, index) => {
+				return (
+					<ControlledSnackBar
+						key={index}
+						anchorOrigin={{
+							vertical: "bottom",
+							horizontal: "left",
+						}}
+						autoHideDuration={5000}
+						message={notification.message}
+						action={
+							<StyledButton
+								color="inherit"
+								variant="outlined"
+								size="small"
+								href={notification.action.url}
+								onClick={() => dispatch(notification.action.dispatch)}
+							>
+								{notification.action.title}
+							</StyledButton>
+						}
+					/>
+				);
+			})}
+		</>
 	);
 }
 

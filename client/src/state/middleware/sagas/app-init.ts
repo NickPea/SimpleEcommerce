@@ -9,11 +9,37 @@ export default function* async() {
 		//
 		yield take("APP/INIT");
 
-		const data = yield call(getLandingPageData);
-		yield put({ type: "DATA/LANDING-PAGE/FEATURED/LOAD", payload: data });
+		//landing
+		const landingPageFeaturedData = yield call(getLandingPageFeaturedData);
+		yield put({
+			type: "DATA/LANDING-PAGE/FEATURED/INIT",
+			payload: landingPageFeaturedData,
+		});
+
+		//store
+		const storePageCategoryData = yield call(getStorePageCategoryData);
+		yield put({
+			type: "DATA/STORE-PAGE/CATEGORY/INIT",
+			payload: storePageCategoryData,
+		});
+
+		const storePageDisplayData = yield call(getStorePageDisplayData);
+		yield put({
+			type: "DATA/STORE-PAGE/DISPLAY/INIT",
+			payload: storePageDisplayData,
+		});
 	}
 }
-
-const getLandingPageData = async () => {
-	return await axios.get("/api/landing-page/featured").then((res) => res.data);
+const getLandingPageFeaturedData = async () => {
+	return await axios
+		.get("/api/landing-page/featured/init")
+		.then((res) => res.data);
+};
+const getStorePageCategoryData = async () => {
+	return await axios.get("/api/store-page/categories").then((res) => res.data);
+};
+const getStorePageDisplayData = async () => {
+	return await axios
+		.get("/api/store-page/products/first-category")
+		.then((res) => res.data);
 };

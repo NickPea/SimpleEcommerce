@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 //components
 import Filter from "./filter";
-import ProductDisplay from "./product-display";
+import ProductDisplay from "./display";
 
 const Page = styled.div``;
 
