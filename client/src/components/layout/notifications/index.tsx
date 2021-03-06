@@ -30,15 +30,16 @@ function Notifications({}: PropTypes) {
 						autoHideDuration={5000}
 						message={notification.message}
 						action={
-							<StyledButton
-								color="inherit"
-								variant="outlined"
-								size="small"
-								href={notification.action.url}
-								onClick={() => dispatch(notification.action.dispatch)}
-							>
-								{notification.action.title}
-							</StyledButton>
+							notification.action ? (
+								<StyledButton
+									color="inherit"
+									variant="outlined"
+									size="small"
+									onClick={() => dispatch(notification.action.dispatch)}
+								>
+									{notification.action.title}
+								</StyledButton>
+							) : null
 						}
 					/>
 				);

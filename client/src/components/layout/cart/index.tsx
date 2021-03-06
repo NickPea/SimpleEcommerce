@@ -89,6 +89,7 @@ const MarginLeftAuto = styled.div`
 
 function Cart() {
 	const cartIsVisible = useSelector((state) => state.ui.cart_is_visible);
+	const cartTotal = useSelector(state => state.app.cart.total);
 	const dispatch = useDispatch();
 
 	return (
@@ -111,7 +112,7 @@ function Cart() {
 				<TotalWrapper>
 					<TotalText>Total</TotalText>
 					<MarginLeftAuto>
-						<TotalText>$2355.00*</TotalText>
+						<TotalText>${cartTotal}</TotalText>
 					</MarginLeftAuto>
 				</TotalWrapper>
 				<CheckoutButton pop_up>Checkout</CheckoutButton>

@@ -1,6 +1,7 @@
 //
 
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import SiteButton from "../../../resusable-ui/button-rui";
 import IconSizer from "../../../resusable-ui/icon-sizer-rui";
@@ -15,55 +16,50 @@ const Wrapper = styled.div`
 	text-align: center;
 `;
 
-const Minus = styled.div`
-`;
+const Minus = styled.div``;
 const CurrentCount = styled.div`
 	height: 40px;
 	width: 40px;
-	display:flex;
+	display: flex;
 	justify-content: center;
 	align-items: center;
 `;
-const Plus = styled.div`
-`;
+const Plus = styled.div``;
 
 //types
 interface Proptypes {
-	start: number;
+	quantity: number;
+	productId: number;
 }
 
 //component
-const Counter = ({ start }: Proptypes) => {
-	let [_counter, set_counter] = useState(start);
+const Counter = (props: Proptypes) => {
+	const dispatch = useDispatch();
 
-	//validate count
-	const set_counter_NoLessThanOne = (newCount) => {
-		if (newCount < 1) {
+	const handleClickQuantityChange = (changeBy: number) => {
+		if (props.quantity + changeBy < 1) {
 			return;
-		} else {
-			set_counter(newCount);
 		}
+		dispatch({
+			type: "APP/CART/ITEM/QUANTITY/UPDATE/START",
+			payload: {
+				productId: props.productId,
+				quantity: props.quantity + changeBy,
+			},
+		});
 	};
 
 	return (
 		<Wrapper>
-			<Minus
-				onClick={() => {
-					set_counter_NoLessThanOne(_counter - 1);
-				}}
-			>
+			<Minus onClick={() => handleClickQuantityChange(-1)}>
 				<SiteButton pop_up>
 					<IconSizer h="20px" w="20px">
 						-
 					</IconSizer>
 				</SiteButton>
 			</Minus>
-			<CurrentCount>{_counter}</CurrentCount>
-			<Plus
-				onClick={() => {
-					set_counter_NoLessThanOne(_counter + 1);
-				}}
-			>
+			<CurrentCount>{props.quantity}</CurrentCount>
+			<Plus onClick={() => handleClickQuantityChange(+1)}>
 				<SiteButton pop_up>
 					<IconSizer h="20px" w="20px">
 						+

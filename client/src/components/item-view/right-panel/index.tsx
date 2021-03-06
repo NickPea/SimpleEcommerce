@@ -74,10 +74,10 @@ function ItemDetails() {
 	const product = useSelector((state) => state.data.item_page.product);
 
 	const handleClickAddToCart = () => {
-		dispatch({type: 'APP/CART/ADD', payload: {item: product, quantity: 1}})
+		dispatch({type: 'APP/CART/ITEMS/ADD/START', payload: {product: product, quantity: 1}})
 	}
 	const handleClickByNow = () => {
-		dispatch({type: 'APP/CART/ADD-&-CHECKOUT', payload: {item: product, quantity: 1}});
+		dispatch({type: 'APP/CART/ITEMS/ADD-&-CHECKOUT/START', payload: {product: product, quantity: 1}});
 	}
 
 	return (

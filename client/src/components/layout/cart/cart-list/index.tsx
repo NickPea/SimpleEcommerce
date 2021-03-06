@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
 
 //components
 import Counter from "../counter";
 
 //fake data
-import { cartProducts } from "../../../../fake-product-data";
 import SiteButton from "../../../resusable-ui/button-rui";
+import { useSelector } from "react-redux";
 
 const List = styled.div`
 	display: flex;
@@ -41,8 +42,11 @@ const RemoveButton = styled(SiteButton)`
 	color: white;
 	&:hover {
 		font-weight: bolder;
-		background-color: rgba(216,65,57,1);
+		background-color: rgba(216, 65, 57, 1);
 	}
+`;
+const CartEmpty = styled.div`
+	padding: 5%;
 `;
 //util
 const MarginLeftAuto = styled.div`
@@ -52,29 +56,50 @@ const MarginLeftAuto = styled.div`
 interface Proptypes {}
 
 function CartList({}: Proptypes) {
+	const cartItems = useSelector((state) => state.app.cart.items);
+	const dispatch = useDispatch();
+	const handleClickRemoveItem = (itemIndex: number, cartItem) => {
+		dispatch({
+			type: "APP/CART/ITEMS/REMOVE/START",
+			payload: {
+				indexToRemove: itemIndex,
+				item: cartItem,
+			},
+		});
+	};
+
 	return (
 		<List>
-			{cartProducts.map((product, i) => {
-				return (
-					<Product key={i}>
-						<FlexRow>
-							<ImageWrapper>
-								<Image src={product.imgUrl} />
-							</ImageWrapper>
-							<DetailsWrapper>
-								<Title>{product.title}</Title>
-								<Price>{product.price}</Price>
-							</DetailsWrapper>
-						</FlexRow>
-						<FlexRow>
-							<RemoveButton>Remove</RemoveButton>
-							<MarginLeftAuto>
-								<Counter start={product.count} />
-							</MarginLeftAuto>
-						</FlexRow>
-					</Product>
-				);
-			})}
+			{cartItems.length === 0 ? (
+				<CartEmpty>Your cart is empty.</CartEmpty>
+			) : (
+				cartItems.map((item, index) => {
+					return (
+						<Product key={item.product.id}>
+							<FlexRow>
+								<ImageWrapper>
+									<Image src={item.product.image_url} />
+								</ImageWrapper>
+								<DetailsWrapper>
+									<Title>{item.product.title}</Title>
+									<Price>${item.product.price}</Price>
+								</DetailsWrapper>
+							</FlexRow>
+							<FlexRow>
+								<RemoveButton onClick={() => handleClickRemoveItem(index, item)}>
+									Remove
+								</RemoveButton>
+								<MarginLeftAuto>
+									<Counter
+										quantity={item.quantity}
+										productId={item.product.id}
+									/>
+								</MarginLeftAuto>
+							</FlexRow>
+						</Product>
+					);
+				})
+			)}
 		</List>
 	);
 }
