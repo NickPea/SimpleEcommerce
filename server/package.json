@@ -22,11 +22,12 @@
 		"supertest": "^6.1.3"
 	},
 	"scripts": {
-		"start": "nodemon --experimental-specifier-resolution=node --trace-warnings ./app/boot/start-app",
+		"start": "nodemon --experimental-specifier-resolution=node --trace-warnings ./_start",
 		"test": "NODE_OPTIONS=--experimental-vm-modules npx jest --watch --detectOpenHandles",
 		"db": "knex --esm",
 		"migrate": "npm run db migrate:latest",
 		"rollback": "npm run db migrate:rollback",
-		"seed": "npm run db seed:run"
+		"seed": "npm run db seed:run",
+		"mns": "npm run migrate && npm run seed"
 	}
 }

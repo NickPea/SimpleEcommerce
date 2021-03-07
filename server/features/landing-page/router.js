@@ -7,10 +7,10 @@ import Controller from "./Controller";
 
 //test
 router.get("/test", (req, res) => {
-	res.send("working");
+	res.send("landing page router working");
 });
 
 //prefix: '/api/landing-page'
-router.get("/featured", Controller.getFeatured());
+router.get("/featured/init", Controller.getFeatured());
 
 export default router;

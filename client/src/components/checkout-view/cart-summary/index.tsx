@@ -1,14 +1,13 @@
 //
 
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 //fake data
 import { cartProducts } from "../../../fake-product-data";
 
 //components
-import SiteButton from "../../resusable-ui/button-rui";
-import IconSizer from "../../resusable-ui/icon-sizer-rui";
 import LineSpacer from "../../resusable-ui/line-spacer-rui";
 
 //styles
@@ -79,21 +78,24 @@ const MarginLeftAuto = styled.div`
 interface Proptypes {}
 
 function CartSummary({}: Proptypes) {
+	const cartItems = useSelector(state => state.app.cart.items);
+	const cartTotal = useSelector(state => state.app.cart.total);
+
 	return (
 		<Wrapper>
 			<SubtleText>Order Summary</SubtleText>
 			<List>
-				{cartProducts.map((product, i) => {
+				{cartItems.map((item, i) => {
 					return (
 						<Product key={i}>
 							<FlexRow>
 								<ImageWrapper>
-									<Image src={product.imgUrl} />
+									<Image src={item.product.image_url} />
 								</ImageWrapper>
 								<DetailsWrapper>
-									<Title>{product.title}</Title>
-									<Price>{product.price}</Price>
-                                    <Count>x{product.count}</Count>
+									<Title>{item.product.title}</Title>
+									<Price>${item.product.price}</Price>
+                                    <Count>x{item.quantity}</Count>
 								</DetailsWrapper>
 
 							</FlexRow>
@@ -106,7 +108,7 @@ function CartSummary({}: Proptypes) {
                 <TotalWrapper>
                     <TotalText>Total</TotalText>
                     <MarginLeftAuto>
-                        <TotalText>$2355.00*</TotalText>
+                        <TotalText>${cartTotal}*</TotalText>
                     </MarginLeftAuto>
                 </TotalWrapper>
                 <SubText>* Not inclusive of shipping or taxes.</SubText>

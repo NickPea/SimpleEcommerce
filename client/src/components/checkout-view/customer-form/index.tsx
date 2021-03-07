@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import joi from "joi";
+import { useDispatch } from "react-redux";
 
 //resources
 import SiteLogoSVG from "../../../resources/icons/site-logo-svg";
 
 //components
-import FormControl from "@material-ui/core/FormControl";
 import TextField from "@material-ui/core/TextField";
 import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "../../resusable-ui/button-rui";
 
@@ -104,14 +104,166 @@ const FinalizeButton = styled(Button)`
 		color: ${(p) => p.theme.smoothblack};
 	}
 `;
+const Errors = styled.div`
+	color: red;
+`;
 
 interface PropTypes {}
 
 function CustomerInformationForm({}: PropTypes) {
-	const [_formState, set_formState] = useState("");
-	function handle_formState(event) {
-		set_formState(event.target.value);
-	}
+	const dispatch = useDispatch();
+
+	//form state & validation
+	const [_validationErrors, set_validationErrors] = useState({});
+
+	const [_email, set_email] = useState("");
+	const [_phoneNumber, set_phoneNumber] = useState("");
+	const [_firstName, set_firstName] = useState("");
+	const [_lastName, set_lastName] = useState("");
+	const [_address, set_address] = useState("");
+	const [_suburb, set_suburb] = useState("");
+	const [_country, set_country] = useState("");
+	const [_province, set_province] = useState("");
+	const [_postcode, set_postcode] = useState("");
+
+	const handleChangeEmail = (e) => set_email(e.target.value);
+	const handleChangePhoneNumber = (e) => set_phoneNumber(e.target.value);
+	const handleChangeFirstName = (e) => set_firstName(e.target.value);
+	const handleChangeLastName = (e) => set_lastName(e.target.value);
+	const handleChangeAddress = (e) => set_address(e.target.value);
+	const handleChangeSuburb = (e) => set_suburb(e.target.value);
+	const handleChangeCountry = (e) => set_country(e.target.value);
+	const handleChangeProvince = (e) => set_province(e.target.value);
+	const handleChangePostcode = (e) => set_postcode(e.target.value);
+
+	const emailValidation = joi
+		.string()
+		.email({ tlds: { allow: false } })
+		.required()
+		.label("email");
+	const phoneNumberValidation = joi
+		.number()
+		.integer()
+		.required()
+		.label("phone number");
+	const firstNameValidation = joi.string().required().label("first name");
+	const lastNameValidation = joi.string().required().label("last name");
+	const addressValidation = joi.string().alphanum().required().label("address");
+	const suburbValidation = joi.string().required().label("suburb");
+	const countryValidation = joi.string().required().label("country");
+	const provinceValidation = joi.string().required().label("province");
+	const postcodeValidation = joi.number().required().label("postcode");
+
+	const handleBlurEmail = (e) => {
+		const { value, error } = emailValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, email: error.message })
+			: set_validationErrors({ ..._validationErrors, email: null });
+	};
+	const handleBlurPhoneNumber = (e) => {
+		const { value, error } = phoneNumberValidation.validate(e.target.value);
+		error
+			? set_validationErrors({
+					..._validationErrors,
+					phoneNumber: error.message,
+			  })
+			: set_validationErrors({ ..._validationErrors, phoneNumber: null });
+	};
+	const handleBlurFirstName = (e) => {
+		const { value, error } = firstNameValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, firstName: error.message })
+			: set_validationErrors({ ..._validationErrors, firstName: null });
+	};
+	const handleBlurLastName = (e) => {
+		const { value, error } = lastNameValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, lastName: error.message })
+			: set_validationErrors({ ..._validationErrors, lastName: null });
+	};
+	const handleBlurAddress = (e) => {
+		const { value, error } = addressValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, address: error.message })
+			: set_validationErrors({ ..._validationErrors, address: null });
+	};
+	const handleBlurSuburb = (e) => {
+		const { value, error } = suburbValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, suburb: error.message })
+			: set_validationErrors({ ..._validationErrors, suburb: null });
+	};
+	const handleBlurCountry = (e) => {
+		const { value, error } = countryValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, country: error.message })
+			: set_validationErrors({ ..._validationErrors, country: null });
+	};
+	const handleBlurProvince = (e) => {
+		const { value, error } = provinceValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, province: error.message })
+			: set_validationErrors({ ..._validationErrors, province: null });
+	};
+	const handleBlurPostcode = (e) => {
+		const { value, error } = postcodeValidation.validate(e.target.value);
+		error
+			? set_validationErrors({ ..._validationErrors, postcode: error.message })
+			: set_validationErrors({ ..._validationErrors, postcode: null });
+	};
+
+	const formValidation = joi.object({
+		email: joi
+			.string()
+			.email({ tlds: { allow: false } })
+			.required()
+			.label("email"),
+		phoneNumber: joi.number().integer().required().label("phone number"),
+		firstName: joi.string().required().label("first name"),
+		lastName: joi.string().required().label("last name"),
+		address: joi.string().alphanum().required().label("address"),
+		suburb: joi.string().required().label("suburb"),
+		country: joi.string().required().label("country"),
+		province: joi.string().required().label("province"),
+		postcode: joi.number().required().label("postcode"),
+	});
+
+	const handleOnSubmit = (e) => {
+		const { value, error } = formValidation.validate({
+			email: _email,
+			phoneNumber: _phoneNumber,
+			firstName: _firstName,
+			lastName: _lastName,
+			address: _address,
+			suburb: _suburb,
+			country: _country,
+			province: _province,
+			postcode: _postcode,
+		});
+
+		if (error) {
+			error.details.forEach((err) => {
+				set_validationErrors({
+					..._validationErrors,
+					[err.context.key]: err.message,
+				});
+			});
+			dispatch({
+				type: "APP/NOTIFICATIONS/ADD",
+				payload: {
+					message: "Please fill in the form correctly"
+				}
+			});
+		} else {
+			dispatch({
+				type: "APP/NOTIFICATIONS/ADD",
+				payload: {
+					message: `CONGRATULATIONS ${value.firstName}. Enjoy your new bike!`
+				}
+			});
+			//more clean up (loading cloak??) and redirection here!!
+		}
+	};
 
 	return (
 		<Wrapper>
@@ -131,14 +283,30 @@ function CustomerInformationForm({}: PropTypes) {
 					<FormSectionTitle>Contact Information.</FormSectionTitle>
 					<FormRow>
 						<FormCol flex="60%">
-							<StyledTextField variant="outlined" label="Email" fullWidth />
+							<StyledTextField
+								variant="outlined"
+								label="Email"
+								fullWidth
+								value={_email}
+								onChange={handleChangeEmail}
+								onBlur={handleBlurEmail}
+							/>
+							<Errors>
+								{_validationErrors.email && _validationErrors.email}
+							</Errors>
 						</FormCol>
 						<FormCol flex="40%">
 							<StyledTextField
 								variant="outlined"
 								label="Phone Number"
 								fullWidth
+								value={_phoneNumber}
+								onChange={handleChangePhoneNumber}
+								onBlur={handleBlurPhoneNumber}
 							/>
+							<Errors>
+								{_validationErrors.phoneNumber && _validationErrors.phoneNumber}
+							</Errors>
 						</FormCol>
 					</FormRow>
 					<FormSectionTitle>Shipping Address.</FormSectionTitle>
@@ -148,20 +316,56 @@ function CustomerInformationForm({}: PropTypes) {
 								variant="outlined"
 								label="First Name"
 								fullWidth
+								value={_firstName}
+								onChange={handleChangeFirstName}
+								onBlur={handleBlurFirstName}
 							/>
+							<Errors>
+								{_validationErrors.firstName && _validationErrors.firstName}
+							</Errors>
 						</FormCol>
 						<FormCol flex="50%">
-							<StyledTextField variant="outlined" label="Last Name" fullWidth />
+							<StyledTextField
+								variant="outlined"
+								label="Last Name"
+								fullWidth
+								value={_lastName}
+								onChange={handleChangeLastName}
+								onBlur={handleBlurLastName}
+							/>
+							<Errors>
+								{_validationErrors.lastName && _validationErrors.lastName}
+							</Errors>
 						</FormCol>
 					</FormRow>
 					<FormRow>
 						<FormCol flex="100%">
-							<StyledTextField variant="outlined" label="Address" fullWidth />
+							<StyledTextField
+								variant="outlined"
+								label="Address"
+								fullWidth
+								value={_address}
+								onChange={handleChangeAddress}
+								onBlur={handleBlurAddress}
+							/>
+							<Errors>
+								{_validationErrors.address && _validationErrors.address}
+							</Errors>
 						</FormCol>
 					</FormRow>
 					<FormRow>
 						<FormCol flex="100%">
-							<StyledTextField variant="outlined" label="Suburb" fullWidth />
+							<StyledTextField
+								variant="outlined"
+								label="Suburb"
+								fullWidth
+								value={_suburb}
+								onChange={handleChangeSuburb}
+								onBlur={handleBlurSuburb}
+							/>
+							<Errors>
+								{_validationErrors.suburb && _validationErrors.suburb}
+							</Errors>
 						</FormCol>
 					</FormRow>
 					<FormRow>
@@ -171,19 +375,25 @@ function CustomerInformationForm({}: PropTypes) {
 								variant="outlined"
 								label="Country"
 								fullWidth
-								value="AUST"
+								value={_country}
+								onChange={handleChangeCountry}
+								onBlur={handleBlurCountry}
 							>
 								<MenuItem value={"AUST"}>Australia</MenuItem>
 							</StyledTextField>
+							<Errors>
+								{_validationErrors.country && _validationErrors.country}
+							</Errors>
 						</FormCol>
 						<FormCol flex="33%">
 							<StyledTextField
 								select
 								variant="outlined"
 								label="State"
-								value={_formState}
-								onChange={handle_formState}
 								fullWidth
+								value={_province}
+								onChange={handleChangeProvince}
+								onBlur={handleBlurProvince}
 							>
 								<MenuItem value={"qld"}>Queensland</MenuItem>
 								<MenuItem value={"nsw"}>New South Wales</MenuItem>
@@ -193,14 +403,29 @@ function CustomerInformationForm({}: PropTypes) {
 								<MenuItem value={"sa"}>South Australia</MenuItem>
 								<MenuItem value={"act"}>Australian Capital Territory</MenuItem>
 							</StyledTextField>
+							<Errors>
+								{_validationErrors.province && _validationErrors.province}
+							</Errors>
 						</FormCol>
 						<FormCol flex="33%">
-							<StyledTextField variant="outlined" label="Postcode" fullWidth />
+							<StyledTextField
+								variant="outlined"
+								label="Postcode"
+								fullWidth
+								value={_postcode}
+								onChange={handleChangePostcode}
+								onBlur={handleBlurPostcode}
+							/>
+							<Errors>
+								{_validationErrors.postcode && _validationErrors.postcode}
+							</Errors>
 						</FormCol>
 					</FormRow>
 					<FormRow>
 						<FormCol ml="auto">
-							<FinalizeButton>Proceed to Payment</FinalizeButton>
+							<FinalizeButton tabIndex={0} onClick={handleOnSubmit}>
+								Proceed to Payment
+							</FinalizeButton>
 						</FormCol>
 					</FormRow>
 				</FormWrapper>

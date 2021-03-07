@@ -1,6 +1,6 @@
 //
 
-import Products from "../../app/database/repositories/products";
+import Products from "../../database/repositories/products";
 
 class Service {
 	//

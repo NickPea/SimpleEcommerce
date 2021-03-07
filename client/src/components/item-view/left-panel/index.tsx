@@ -26,7 +26,7 @@ function ItemDisplay() {
 	return (
 		<Wrapper>
 			<Padding>
-				<ImagePoster src={product.imageURL} />
+				<ImagePoster src={product.image_url} />
 			</Padding>
 		</Wrapper>
 	);

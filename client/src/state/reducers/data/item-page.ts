@@ -3,7 +3,7 @@
 import cloneDeep from "lodash/cloneDeep";
 
 const preloadedState = {
-	product: {},
+	product: {}
 };
 
 export default function (

@@ -3,6 +3,7 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 //components
 import SiteButton from "../../resusable-ui/button-rui";
@@ -13,7 +14,7 @@ import CartProductList from "./cart-list";
 //resources
 import CloseSVG from "../../../resources/icons/close-svg";
 
-const PositionAndSize = styled.div<{show: boolean}>`
+const PositionAndSize = styled.div<{ show: boolean }>`
 	position: fixed;
 	top: 0;
 	right: 0;
@@ -86,18 +87,26 @@ const CheckoutButton = styled(SiteButton)`
 const MarginLeftAuto = styled.div`
 	margin-left: auto;
 `;
+const RouteLink = styled(Link)`
+	text-decoration: none;
+	color: inherit;
+`;
 
 function Cart() {
 	const cartIsVisible = useSelector((state) => state.ui.cart_is_visible);
-	const cartTotal = useSelector(state => state.app.cart.total);
+	const cartTotal = useSelector((state) => state.app.cart.total);
 	const dispatch = useDispatch();
+
+	const handleClickToggleCartVisibility = () => {
+		dispatch({ type: "UI/CART-TOGGLE" });
+	};
 
 	return (
 		<PositionAndSize show={cartIsVisible}>
 			<Wrapper>
 				<Header>
 					<Title>Cart</Title>
-					<CloseButton onClick={() => dispatch({type: 'UI/CART-TOGGLE'})}>
+					<CloseButton onClick={handleClickToggleCartVisibility}>
 						<SiteButton pop_up>
 							<IconSizer h="20px" w="20px">
 								<CloseSVG />
@@ -115,7 +124,11 @@ function Cart() {
 						<TotalText>${cartTotal}</TotalText>
 					</MarginLeftAuto>
 				</TotalWrapper>
-				<CheckoutButton pop_up>Checkout</CheckoutButton>
+				<RouteLink to="/checkout">
+					<CheckoutButton onClick={handleClickToggleCartVisibility} pop_up>
+						Checkout
+					</CheckoutButton>
+				</RouteLink>
 				<SubText>* Not inclusive of shipping or taxes.</SubText>
 			</Wrapper>
 		</PositionAndSize>
