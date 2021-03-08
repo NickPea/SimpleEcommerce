@@ -75,6 +75,19 @@ function* handleCartItemRemove() {
 	}
 }
 
+function* handleCartItemsRemoveAll() {
+	while (true) {
+		yield take("APP/CART/ITEMS/REMOVEALL/START");
+		yield put({
+			type: "APP/CART/ITEMS/REMOVEALL/FINISH",
+		});
+		yield put({
+			type: "APP/CART/TOTAL/CALCULATE",
+		});
+
+	}
+}
+
 function* handleCartTotal() {
 	while (true) {
 		yield take("APP/CART/TOTAL/CALCULATE");
@@ -108,6 +121,7 @@ export default function* () {
 		handleCartItemAdd(),
 		handleCartItemAddAndCheckout(),
 		handleCartItemRemove(),
+		handleCartItemsRemoveAll(),
 		handleCartItemQuanity(),
 		handleCartTotal(),
 	]);

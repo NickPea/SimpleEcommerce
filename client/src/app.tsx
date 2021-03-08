@@ -7,7 +7,7 @@ import Routes from "./routing";
 import { BrowserRouter } from "react-router-dom";
 
 //service container
-import './services';
+import "./services";
 
 //babel-polyfill-hack for generator functions
 import "regenerator-runtime/runtime";
@@ -36,7 +36,7 @@ import NavBar from "./components/layout/navbar";
 import Footer from "./components/layout/footer";
 import Cart from "./components/layout/cart";
 import Notifications from "./components/layout/notifications";
-import LoadingCloak from "./components/layout/loading-cloak";
+import Loading from "./components/layout/loading";
 
 //entry
 const App = () => {
@@ -53,7 +53,7 @@ const App = () => {
 			<Footer />
 			<Cart />
 			<Notifications />
-			<LoadingCloak />
+			<Loading />
 		</Fragment>
 	);
 };

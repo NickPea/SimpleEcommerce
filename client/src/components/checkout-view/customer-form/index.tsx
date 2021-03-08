@@ -251,17 +251,44 @@ function CustomerInformationForm({}: PropTypes) {
 			dispatch({
 				type: "APP/NOTIFICATIONS/ADD",
 				payload: {
-					message: "Please fill in the form correctly"
-				}
+					message: "Please fill in the form correctly",
+				},
 			});
 		} else {
+			//fake loading
 			dispatch({
-				type: "APP/NOTIFICATIONS/ADD",
-				payload: {
-					message: `CONGRATULATIONS ${value.firstName}. Enjoy your new bike!`
-				}
+				type: "UI/LOADING/ON",
 			});
-			//more clean up (loading cloak??) and redirection here!!
+
+			setTimeout(() => {
+				//wipe all state
+				[
+					set_email,
+					set_phoneNumber,
+					set_firstName,
+					set_lastName,
+					set_address,
+					set_suburb,
+					set_country,
+					set_province,
+					set_postcode,
+				].forEach((set_state) => set_state(""));
+
+				dispatch({
+					type: "APP/CART/ITEMS/REMOVEALL/START",
+				});
+
+				//congratulate user
+				dispatch({
+					type: "UI/LOADING/OFF",
+				});
+				dispatch({
+					type: "APP/NOTIFICATIONS/ADD",
+					payload: {
+						message: `CONGRATULATIONS ${value.firstName}. Enjoy your new bike!`,
+					},
+				});
+			}, 1000);
 		}
 	};
 

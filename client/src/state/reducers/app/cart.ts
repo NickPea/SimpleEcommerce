@@ -47,6 +47,13 @@ export default function (state = preloadedState, action: Action) {
 				return _state;
 			}
 			break;
+		case "APP/CART/ITEMS/REMOVEALL/FINISH":
+			{
+				const _state = cloneDeep(state);
+				_state.items.splice(0, _state.items.length);
+				return _state;
+			}
+			break;
 		default:
 			return state;
 			break;

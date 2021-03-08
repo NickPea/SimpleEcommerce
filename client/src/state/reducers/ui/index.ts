@@ -3,7 +3,7 @@
 import cloneDeep from "lodash/cloneDeep";
 
 const preloadedState = {
-	app_is_loading: false,
+	loading: false,
 	cart_is_visible: false,
 };
 
@@ -32,16 +32,16 @@ export default (state = preloadedState, action: ActionTypes) => {
 				return { ..._state, cart_is_visible: false };
 			}
 			break;
-		case "UI/APP-START-LOADING":
+		case "UI/LOADING/ON":
 			{
 				const _state = cloneDeep(state);
-				return { ..._state, app_is_loading: true };
+				return { ..._state, loading: true };
 			}
 			break;
-		case "UI/APP-STOP-LOADING":
+		case "UI/LOADING/OFF":
 			{
 				const _state = cloneDeep(state);
-				return { ..._state, app_is_loading: false };
+				return { ..._state, loading: false };
 			}
 			break;
 		default:

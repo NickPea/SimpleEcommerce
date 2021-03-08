@@ -89,15 +89,6 @@ function NavBar() {
 			</RouteLink>
 			{/** -> item views */}
 
-			<RouteLink to="/item">
-				<NavButton>Item</NavButton>
-			</RouteLink>
-
-			{/* temp nav button for development */}
-			<RouteLink to="/checkout">
-				<NavButton>checkout</NavButton>
-			</RouteLink>
-
 			{/* opens cart */}
 			<FakeRouteLink onClick={()=>dispatch({type: 'UI/CART-TOGGLE'})}>
 				<NavButton>
