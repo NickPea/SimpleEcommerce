@@ -9,6 +9,7 @@ import express from "express";
 const apiRouter = express.Router();
 const spaRouter = express.Router();
 const indexRouter = express.Router();
+const prefixRouter = express.Router();
 
 //feature routers
 import LandingPageRouter from "../features/landing-page/router";
@@ -28,7 +29,9 @@ spaRouter.get('*', (req, res) => {
 indexRouter.use('/api', apiRouter);
 indexRouter.use(spaRouter);
 
-export default indexRouter;
+prefixRouter.use('/simple-ecommerce', indexRouter);
+
+export default prefixRouter;
 
 
 
