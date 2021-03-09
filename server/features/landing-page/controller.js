@@ -1,6 +1,6 @@
 //
 
-import Service from "./Service";
+import Service from "./service";
 
 class Controller {
 	//
